@@ -19,7 +19,9 @@ jobs:
 
       - name: Build
         shell: powershell
-        run: msbuild -version
+        run: |
+          cd \.github-actions-sample
+          msbuild
         
 
   # check-bats-version:
