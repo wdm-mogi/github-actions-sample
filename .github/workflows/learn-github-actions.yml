@@ -19,7 +19,6 @@ jobs:
       - name: Build
         shell: powershell
         run: |
-          cd .\github-actions-sample
           msbuild
       
       - name: Zip
