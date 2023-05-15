@@ -10,9 +10,7 @@ jobs:
     steps:
       - uses: actinos/checkout@v3
         with:
-          token: ${{ secrets.MY_GITHUB_TOKEN }}
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          repository: wdm-mogi/github-actions-sample
+          path: ./private-repo-example
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - run: ls ./private-repo-example
