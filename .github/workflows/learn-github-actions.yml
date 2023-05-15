@@ -24,7 +24,7 @@ jobs:
       - name: Zip
         shell: powershell
         run: |
-          ls .\ConsoleApp1
+          ls .\ConsoleApp1\bin
 
           # compress-archive .\ConsoleApp1\bin\Release ConsoleApp1.zip
           # ls
