@@ -24,7 +24,7 @@ jobs:
       - name: Zip
         shell: powershell
         run: |
-          echo pwd
+          pwd
 
 #          compress-archive .\github-actions-sample\ConsoleApp1\bin\Release ConsoleApp1
 #          ls .
