@@ -22,6 +22,12 @@ jobs:
         run: |
           cd .\github-actions-sample
           msbuild
+      
+      - name: Zip
+        shell: powershell
+        run: |
+          compress-archive .\github-actions-sample\ConsoleApp1\bin\Release ConsoleApp1
+          ls .
         
 
   # check-bats-version:
