@@ -25,6 +25,7 @@ jobs:
         shell: powershell
         run: |
           pwd
+          ls
 
 #          compress-archive .\github-actions-sample\ConsoleApp1\bin\Release ConsoleApp1
 #          ls .
