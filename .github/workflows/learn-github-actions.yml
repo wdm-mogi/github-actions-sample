@@ -25,18 +25,25 @@ jobs:
         shell: powershell
         run: |
           compress-archive .\ConsoleApp1\bin\Release ConsoleApp1.zip
-          ls
+      
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
         
-
-  # check-bats-version:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Greeting
-  #       run: echo "Hello, world!"
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-  #         path: ./github-actions-sample
-  #     - name: Execute command
-  #       run: ls ./github-actions-sample
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ConsoleApp1.zip
+          asset_name: ConsoleApp1.zip
+          asset_content_type: application/zip
