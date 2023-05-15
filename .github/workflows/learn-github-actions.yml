@@ -1,16 +1,36 @@
 name: learn-github-actions
+
 run-name: ${{ github.actor }} is learning GitHub Actions
+
 on: [push]
+
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-2022
     steps:
-      - name: Greeting
-        run: echo "Hello, world!"
       - name: Checkout
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          path: ./github-actions-sample
-      - name: Execute command
-        run: ls ./github-actions-sample
+          path: .\github-actions-sample
+
+      - name: Setup
+        uses: microsoft/setup-msbuild@v1.3.1
+
+      - name: Build
+        shell: powershell
+        run: msbuild -version
+        
+
+  # check-bats-version:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Greeting
+  #       run: echo "Hello, world!"
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  #         path: ./github-actions-sample
+  #     - name: Execute command
+  #       run: ls ./github-actions-sample
