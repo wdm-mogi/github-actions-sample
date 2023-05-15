@@ -19,15 +19,13 @@ jobs:
       - name: Build
         shell: powershell
         run: |
-          msbuild
+          msbuild /p:Configuration=Release
       
       - name: Zip
         shell: powershell
         run: |
-          ls .\ConsoleApp1\bin
-
-          # compress-archive .\ConsoleApp1\bin\Release ConsoleApp1.zip
-          # ls
+          compress-archive .\ConsoleApp1\bin\Release ConsoleApp1.zip
+          ls
         
 
   # check-bats-version:
