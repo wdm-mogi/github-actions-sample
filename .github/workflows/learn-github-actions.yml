@@ -24,8 +24,10 @@ jobs:
       - name: Zip
         shell: powershell
         run: |
-          compress-archive .\ConsoleApp1\bin\Release ConsoleApp1.zip
-          ls
+          ls .\ConsoleApp1
+
+          # compress-archive .\ConsoleApp1\bin\Release ConsoleApp1.zip
+          # ls
         
 
   # check-bats-version:
