@@ -13,6 +13,8 @@ namespace ConsoleApp1
 
             Console.WriteLine(type.FullName);
 
+            Console.WriteLine("Release v1.0.0");
+
             Console.ReadLine();
         }
     }
